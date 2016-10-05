@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
-import { app_routing } from './app.routing';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -11,7 +11,8 @@ import { HeaderComponent } from './header.component';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { DropdownDirective } from './dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipesModule } from './recipes/recipes.module';
+import { RecipeService } from './recipes/recipe.service';
+import { HomeComponent } from './home.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCq2lOavw7YV8OH_PGNeJkHsTnGWjPwVf4",
@@ -24,17 +25,17 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective
+    DropdownDirective,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    app_routing,
+    routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    ShoppingListModule,
-    RecipesModule
+    ShoppingListModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
